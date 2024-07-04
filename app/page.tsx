@@ -15,8 +15,9 @@ const eventList: Event[] = [
     description: "内容自由のゆるいハッカソン会です",
     beginDate: "2024-07-04",
     latitude: 35.69411866263864,
-    longtitude: 139.7686725854874,
+    longitude: 139.7686725854874,
     rating: 5,
+    url: "https://fffff.connpass.com/event/322453/",
   },
 ]
 
@@ -36,7 +37,7 @@ const HomePage: NextPage = () => {
           minHeight: "100%",
         }}
       >
-        <Map location={location} />
+        <Map location={location} events={eventList} />
         <div
           style={{
             alignItems: "center",

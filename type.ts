@@ -3,6 +3,7 @@ export type Event = {
   description: string | undefined
   beginDate: string
   latitude: number
-  longtitude: number
+  longitude: number
   rating: number
+  url?: string
 }
