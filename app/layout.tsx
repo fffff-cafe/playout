@@ -58,6 +58,13 @@ export default function RootLayout({
         >
           <>{children}</>
         </main>
+        <footer
+          style={{ background: "#2792c3", color: "#f0f0f0", padding: "2rem" }}
+        >
+          <div style={{ textAlign: "center" }}>
+            <p>&copy;FFFFF Cafe</p>
+          </div>
+        </footer>
       </body>
     </html>
   )
