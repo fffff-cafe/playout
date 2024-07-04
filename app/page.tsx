@@ -18,23 +18,29 @@ const HomePage: NextPage = () => {
 
   return (
     <>
-      <Map location={location} />
       <div
         style={{
-          alignItems: "center",
-          display: "flex",
-          flexFlow: "row",
-          justifyContent: "center",
           minHeight: "100%",
-          width: "100%",
         }}
       >
-        <section
+        <Map location={location} />
+        <div
           style={{
-            maxWidth: "48rem",
+            alignItems: "center",
+            display: "flex",
+            flexFlow: "row",
+            justifyContent: "center",
+            minHeight: "100%",
             width: "100%",
           }}
-        ></section>
+        >
+          <section
+            style={{
+              maxWidth: "48rem",
+              width: "100%",
+            }}
+          ></section>
+        </div>
       </div>
     </>
   )
