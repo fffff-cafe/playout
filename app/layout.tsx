@@ -29,18 +29,25 @@ export default function RootLayout({
             zIndex: "2000",
           }}
         >
-          <Link
-            href={"/"}
+          <div
             style={{
-              fontSize: "1.5rem",
-              fontWeight: "bold",
+              margin: "auto",
+              maxWidth: "72rem",
             }}
           >
-            Playout!
-          </Link>
-          <p style={{ fontSize: ".6rem" }}>
-            オフラインで集まる勉強会ぷらっとフォーム
-          </p>
+            <Link
+              href={"/"}
+              style={{
+                fontSize: "1.5rem",
+                fontWeight: "bold",
+              }}
+            >
+              Playout!
+            </Link>
+            <p style={{ fontSize: ".6rem" }}>
+              オフラインで集まる勉強会ぷらっとフォーム
+            </p>
+          </div>
         </header>
         <main
           style={{
