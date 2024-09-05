@@ -6,20 +6,10 @@ import dynamic from "next/dynamic"
 const Map = dynamic(() => import("../components/map"), {
   ssr: false,
 })
-import { Event } from "../type"
-import { Star } from "../components/svg/icon"
 
-const eventList: Event[] = [
-  {
-    name: "神田・秋葉原 ハッカソン会",
-    description: "内容自由のゆるいハッカソン会です",
-    beginDate: "2024-07-04",
-    latitude: 35.69411866263864,
-    longitude: 139.7686725854874,
-    rating: 5,
-    url: "https://fffff.connpass.com/event/322453/",
-  },
-]
+import { Star } from "../components/svg/icon"
+import Link from "next/link"
+import { eventList } from "../constants"
 
 const HomePage: NextPage = () => {
   const [location, setLocation] = useState<GeolocationPosition>()
@@ -65,7 +55,8 @@ const HomePage: NextPage = () => {
             </h2>
             <div style={{ display: "flex", padding: ".5rem 0" }}>
               {eventList.map((event, i) => (
-                <div
+                <Link
+                  href={`/event/${event.id}`}
                   key={i}
                   style={{
                     border: "solid 1px #2792c3",
@@ -95,7 +86,7 @@ const HomePage: NextPage = () => {
                       {new Date(event.beginDate).toLocaleDateString()}
                     </time>
                   </div>
-                </div>
+                </Link>
               ))}
             </div>
           </section>
