@@ -1,7 +1,12 @@
 import { NextPage } from "next"
 import { eventList } from "../../../constants"
 
-const EventIdPage: NextPage = () => {
+const EventIdPage: NextPage<{
+  params: {
+    id: string
+  }
+}> = ({ params: { id } }) => {
+  const event = eventList.find((e) => e.id == id)
   return (
     <>
       <div
@@ -19,15 +24,7 @@ const EventIdPage: NextPage = () => {
             width: "100%",
           }}
         >
-          <section
-            style={{
-              maxWidth: "72rem",
-              padding: ".5rem",
-              width: "100%",
-            }}
-          >
-            <div style={{ display: "flex", padding: ".5rem 0" }}></div>
-          </section>
+          <h2>{event.name}</h2>
         </div>
       </div>
     </>
