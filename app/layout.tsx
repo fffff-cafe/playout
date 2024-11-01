@@ -3,6 +3,7 @@ import { M_PLUS_1 } from "next/font/google"
 import "./global.css"
 import Link from "next/link"
 import React from "react"
+import Auth from "../components/auth"
 
 const font = M_PLUS_1({ subsets: ["latin"] })
 
@@ -47,6 +48,7 @@ export default function RootLayout({
             <p style={{ fontSize: ".6rem" }}>
               オフラインで集まる勉強会ぷらっとフォーム
             </p>
+            <Auth />
           </div>
         </header>
         <main
