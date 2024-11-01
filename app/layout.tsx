@@ -32,22 +32,27 @@ export default function RootLayout({
         >
           <div
             style={{
+              alignItems: "center",
+              display: "flex",
+              justifyContent: "space-between",
               margin: "auto",
               maxWidth: "72rem",
             }}
           >
-            <Link
-              href={"/"}
-              style={{
-                fontSize: "1.5rem",
-                fontWeight: "bold",
-              }}
-            >
-              Playout!
-            </Link>
-            <p style={{ fontSize: ".6rem" }}>
-              オフラインで集まる勉強会ぷらっとフォーム
-            </p>
+            <div>
+              <Link
+                href={"/"}
+                style={{
+                  fontSize: "1.5rem",
+                  fontWeight: "bold",
+                }}
+              >
+                Playout!
+              </Link>
+              <p style={{ fontSize: ".6rem" }}>
+                オフラインで集まる勉強会ぷらっとフォーム
+              </p>
+            </div>
             <Auth />
           </div>
         </header>

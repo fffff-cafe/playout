@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react"
 import { supabase } from "../utils/supabase"
 import { User } from "@supabase/supabase-js"
+import { Button } from "./form"
 
 const Auth = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false)
@@ -51,15 +52,15 @@ const Auth = () => {
     <div>
       {user ? (
         <>
-          <button onClick={handleSignOut} disabled={isLoading}>
+          <Button onClick={handleSignOut} disabled={isLoading}>
             Sign out
-          </button>
+          </Button>
         </>
       ) : (
         <>
-          <button onClick={handleSignUp} disabled={isLoading}>
+          <Button onClick={handleSignUp} disabled={isLoading}>
             Sign Up
-          </button>
+          </Button>
         </>
       )}
     </div>
