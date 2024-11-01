@@ -70,7 +70,7 @@ const Auth = () => {
                 display: "flex",
                 flexFlow: "column",
                 gap: "1rem",
-                padding: "0 1rem",
+                padding: "1rem",
               }}
             >
               <h2>ログイン・新規登録</h2>
@@ -91,6 +91,17 @@ const Auth = () => {
               >
                 Githubでログインする
               </Button>
+              <a
+                onClick={() => setIsActiveModal(false)}
+                style={{
+                  cursor: "pointer",
+                  display: "block",
+                  textAlign: "center",
+                  width: "100%",
+                }}
+              >
+                キャンセル
+              </a>
             </section>
           </Dialog>
         </>
