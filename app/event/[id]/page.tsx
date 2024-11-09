@@ -11,21 +11,27 @@ const EventIdPage: NextPage<{
     <>
       <div
         style={{
+          alignItems: "center",
+          display: "flex",
+          flexFlow: "row",
+          justifyContent: "center",
           minHeight: "100%",
+          padding: "1rem",
+          width: "100%",
         }}
       >
-        <div
+        <section
           style={{
-            alignItems: "center",
-            display: "flex",
-            flexFlow: "row",
-            justifyContent: "center",
-            minHeight: "100%",
+            maxWidth: "72rem",
+            padding: ".5rem",
             width: "100%",
           }}
         >
-          <h2>{event.name}</h2>
-        </div>
+          <div style={{ width: "100%" }}>
+            <h2>{event.name}</h2>
+            <p>{event.description}</p>
+          </div>
+        </section>
       </div>
     </>
   )

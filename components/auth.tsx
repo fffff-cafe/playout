@@ -2,14 +2,15 @@
 
 import { useEffect, useState } from "react"
 import { supabase } from "../utils/supabase"
-import { User } from "@supabase/supabase-js"
 import { Button } from "./form"
 import { Dialog } from "./common/dialog"
 import Image from "next/image"
+import { useAtom } from "jotai"
+import { accountAtom } from "../store"
 
 const Auth = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false)
-  const [user, setUser] = useState<User>()
+  const [account, setAccount] = useAtom(accountAtom)
   const [isActiveModal, setIsActiveModal] = useState<boolean>(false)
   const [isActiveMenu, setIsActiveMenu] = useState<boolean>(false)
 
@@ -22,7 +23,12 @@ const Auth = () => {
       if (error) {
         console.error(error)
       }
-      setUser(user)
+      const {
+        data: {
+          session: { access_token },
+        },
+      } = await supabase.auth.getSession()
+      setAccount(user)
     }
     check()
     const handleClickOutside = (event) => {
@@ -32,6 +38,7 @@ const Auth = () => {
     }
     document.addEventListener("click", handleClickOutside)
     return () => document.removeEventListener("click", handleClickOutside)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const handleSignIn = async () => {
@@ -53,7 +60,7 @@ const Auth = () => {
       setIsLoading(true)
       const { error } = await supabase.auth.signOut()
       if (error) throw error
-      setUser(undefined)
+      setAccount(undefined)
     } catch (error) {
       console.error(error.message)
     } finally {
@@ -63,7 +70,7 @@ const Auth = () => {
 
   return (
     <div>
-      {user ? (
+      {account ? (
         <>
           <div
             style={{
@@ -76,8 +83,8 @@ const Auth = () => {
             id="userMenu"
           >
             <Image
-              src={user.user_metadata["avatar_url"]}
-              alt={user.user_metadata["name"]}
+              src={account.user_metadata["avatar_url"]}
+              alt={account.user_metadata["name"]}
               style={{
                 borderRadius: "50%",
                 height: "2rem",
@@ -86,7 +93,7 @@ const Auth = () => {
               height={32}
               width={32}
             />
-            <p>{user.user_metadata["name"]}</p>
+            <p>{account.user_metadata["name"]}</p>
             {isActiveMenu && (
               <menu
                 style={{

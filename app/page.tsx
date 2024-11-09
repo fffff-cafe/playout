@@ -53,7 +53,7 @@ const HomePage: NextPage = () => {
             >
               近くで開催予定のイベント
             </h2>
-            <div style={{ display: "flex", padding: ".5rem 0" }}>
+            <div style={{ display: "flex", gap: ".5rem", padding: ".5rem 0" }}>
               {eventList.map((event, i) => (
                 <Link
                   href={`/event/${event.id}`}
@@ -67,7 +67,7 @@ const HomePage: NextPage = () => {
                   }}
                 >
                   <h3>{event.name}</h3>
-                  <p>{event.description}</p>
+                  <p>{event.description.slice(0, 200)}</p>
                   <div
                     style={{
                       display: "flex",
