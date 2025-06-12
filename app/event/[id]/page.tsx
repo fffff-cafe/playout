@@ -1,11 +1,11 @@
-import { NextPage } from "next"
 import { eventList } from "../../../constants"
 
-const EventIdPage: NextPage<{
-  params: {
-    id: string
-  }
-}> = ({ params: { id } }) => {
+const EventIdPage = async ({
+  params,
+}: {
+  params: Promise<{ id: string }>
+}) => {
+  const { id } = await params
   const event = eventList.find((e) => e.id == id)
   return (
     <>

@@ -6,12 +6,12 @@ export const Dialog: FC<ComponentProps<"dialog">> = ({
   open,
   ...props
 }) => {
-  const ref = useRef<HTMLDialogElement>()
+  const ref = useRef<HTMLDialogElement>(null)
   useEffect(() => {
     if (open) {
-      ref.current.showModal()
+      ref.current?.showModal()
     } else {
-      ref.current.close()
+      ref.current?.close()
     }
   }, [open])
   return (
