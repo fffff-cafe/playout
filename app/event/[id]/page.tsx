@@ -1,4 +1,5 @@
-import { eventList } from "../../../constants"
+import { prisma } from "../../../utils/database"
+import { notFound } from "next/navigation"
 
 const EventIdPage = async ({
   params,
@@ -6,7 +7,13 @@ const EventIdPage = async ({
   params: Promise<{ id: string }>
 }) => {
   const { id } = await params
-  const event = eventList.find((e) => e.id == id)
+  const event = await prisma.event.findUnique({
+    where: { id }
+  })
+  
+  if (!event) {
+    notFound()
+  }
   return (
     <>
       <div
@@ -37,8 +44,9 @@ const EventIdPage = async ({
   )
 }
 
-export const generateStaticParams = () => {
-  return eventList.map((event) => ({ id: event.id }))
+export const generateStaticParams = async () => {
+  const events = await prisma.event.findMany()
+  return events.map((event) => ({ id: event.id }))
 }
 
 export default EventIdPage
